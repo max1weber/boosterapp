@@ -25,7 +25,7 @@ stages:
       displayName: Build an image
       inputs:
         containerRegistry: 'dockerhub_max1weber'
-        repository: 'boosterapp'
+        repository: 'max1weber/boosterapp'
         command: 'buildAndPush'
         Dockerfile: '$(Build.SourcesDirectory)/src/boosterapp/DockerFile'
         tags: |

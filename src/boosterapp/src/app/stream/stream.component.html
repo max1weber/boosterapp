@@ -12,25 +12,31 @@
     <nav class="main-nav">
       <ul>
         <li>
-          <a href="https://twitter.com/BoosterFestival" _target="_blank">Twitter</a>
+          <a href="https://twitter.com/BoosterFestival" target="_blank">Twitter</a>
         </li>
         <li>
-          <a href="https://www.instagram.com/boosterfestival/" _target="_blank"> Instagram </a>
+          <a href="https://www.instagram.com/boosterfestival/" target="_blank"> Instagram </a>
             
         </li>
         <li>
-          <a href="https://twitter.com/BoosterFestival" _target="_blank">Booster Festival</a>
+          <a href="https://boosterfestival.nl/showcasefestival-2/"  target="_blank">Booster Festival</a>
       </li>
     </ul>
   </nav>
   </header>
-
+  <h2 *ngIf="selectedStream">Now Paying: {{selectedStream.streamName}}</h2>
+  
   <section class="main-section" *ngIf="selectedStream">
 
+    <div class="main-section-header">
+     
+     
+    </div>
+    <div class="main-section-content">
     <app-video [stream] ="selectedStream">
 
     </app-video>
-
+  </div>
 
   </section>
 

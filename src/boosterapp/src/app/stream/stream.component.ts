@@ -15,10 +15,12 @@ export class StreamComponent implements OnInit, OnDestroy {
   constructor(private streamService: BoosterdataService,private _router: Router, private route: ActivatedRoute) {
      
 
-    console.log(this.route.snapshot.params);
-    console.log(this.route.snapshot.data);
+   // console.log(this.route.snapshot.params);
+   // console.log(this.route.snapshot.data);
 
    }
+
+
   ngOnDestroy(): void {
     this.routeSub.unsubcribe();
   }
@@ -40,6 +42,7 @@ export class StreamComponent implements OnInit, OnDestroy {
                                 this.boosterdata = data.streams; 
                                 console.log("From Route: " + this.streamName);
                                 this.selectedStream = this.boosterdata.find( p=> p.streamName == this.streamName);
+                                this.selectedStream.IsSelected =true;
                                 console.log(this.selectedStream);
                             });
   }
@@ -53,7 +56,7 @@ export class StreamComponent implements OnInit, OnDestroy {
   {
     let index =   this.boosterdata.findIndex(p=> p.id == this.selectedStream.id);
 
-    /* console.log("Current Index: " + index);
+     console.log("Current Index: " + index);
     this.boosterdata[index].IsSelected = false;
 
     console.log("selected stream " + stream.streamName);
@@ -66,7 +69,7 @@ export class StreamComponent implements OnInit, OnDestroy {
 
     console.log(this.boosterdata);
 
-    this.selectedStream = this.boosterdata.find(p=>p.IsSelected == true); */
+    this.selectedStream = this.boosterdata.find(p=>p.IsSelected == true); 
 
     this._router.navigateByUrl("/stream/" + this.selectedStream.streamName);
 

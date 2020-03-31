@@ -65,6 +65,11 @@ min-width: 110%;
   
  
 }
+.main-section-header{
+  width: 500px;
+  align-items: center;
+
+}
 
 .main-video{
 

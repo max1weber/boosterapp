@@ -20,7 +20,7 @@ declare const videojs: any;
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.css']
 })
-export class VideoComponent implements OnInit, OnDestroy {
+export class VideoComponent implements OnInit, OnDestroy, OnChanges {
  
  
  
@@ -48,6 +48,9 @@ export class VideoComponent implements OnInit, OnDestroy {
   constructor(elementRef: ElementRef) {
     // this.url = false;
     this.player = false;
+  }
+  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
+    this.SetupSourceUrl();
   }
   
   
@@ -124,7 +127,7 @@ export class VideoComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
 
-    // this.player.dispose();
+     this.player.dispose();
   }
 
   seek(n) {

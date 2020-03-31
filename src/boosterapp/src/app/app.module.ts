@@ -1,15 +1,42 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+
+import { StreamComponent } from './stream/stream.component';
+
+
+
+declare const videojs: any;
+
+
+const appRoutes: Routes = [
+  
+  {
+    path: 'stream/:streamName',
+    component: StreamComponent,
+    data: { title: 'Booster Streaming Festival 2020' }
+  },
+  { path: '',
+    redirectTo: '/stream/East',
+    pathMatch: 'full'
+  }
+];
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
+    StreamComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes, { enableTracing: false}),
     AppRoutingModule
   ],
   providers: [],

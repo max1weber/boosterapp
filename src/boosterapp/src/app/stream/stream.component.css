@@ -1,0 +1,145 @@
+.container
+{
+
+
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+
+.brand-logo{
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+
+   color: inherit;
+   text-decoration: none;
+
+}
+
+.brand-logo-name{
+  margin: 50px;
+}
+
+.main-nav ul{
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: inherit;
+  
+}
+
+.main-nav a{
+
+  color: inherit;
+  text-decoration: none;
+  padding:  1rem;
+
+}
+
+.main-nav a:hover{
+
+  color: #adadad;
+
+}
+
+.main-header{
+display: flex;
+justify-content: space-between;
+align-items: center;
+height: 100px;
+min-width: 110%;
+
+}
+
+
+.main-section{
+
+  width: 100%;
+  min-height: 600px;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  
+ 
+}
+
+.main-video{
+
+  
+  width: 100%;
+  height: 100%;
+}
+
+.main-video video{
+
+  
+  
+  width: 100%;
+  height: 100%;
+
+}
+
+
+#boosterstream{
+
+  padding: 2rem;
+  margin: 2rem;
+}
+
+
+
+.footer-section{
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+ 
+}
+.footer-section .streambox{
+
+ text-align: center;
+  background-color: transparent;
+ 
+  min-width: 350px;
+  
+  display: block;
+  text-align: center;
+  
+  text-transform: uppercase;
+
+}
+
+.streambox h3{
+
+  margin-left: 70px;
+  margin-bottom: -20px;
+ 
+}
+
+
+
+.streambox img{
+
+  margin: -30px;
+ 
+}
+
+
+.ng-hide:not(.ng-hide-animate) {
+  /* These are just alternative ways of hiding an element */
+  display: block!important;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+.vjs-default-skin.vjs-paused .vjs-big-play-button 
+{
+   /* Remove default play button :-) */
+  display: none;
+}

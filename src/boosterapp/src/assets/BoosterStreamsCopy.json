@@ -1,0 +1,36 @@
+{
+	"streams": [
+		{
+			"id": "zYk8RzTarIbSgApD00ASATX1fMfAs8sJq2efvNBNNO1Y",
+			"order": 0,
+			"streamName": "East",
+			"IsSelected": true,
+			"stream_key": "22c03022-c31b-f098-3f93-4b72de758c6c",
+			"playback_url": "https://memoriamtv-murphy.herokuapp.com/master/memoriamtv/TestStream.m3u8"
+		},
+		{
+			"id": "Up7nKJqZ02vvYV7RQAv6ylwYpG02t3cp86asygtNGAKRs",
+			"streamName": "South",
+			"order": 1,
+			"IsSelected": false,
+			"stream_key": "7ca30334-b3af-df38-ba23-c9df9b4f5700",
+			"playback_url": "https://s3.amazonaws.com/cloud.tourbuzz.net/www/db_images/tour/695364/video_clip_64885-hls_playlist.m3u8"
+		},
+		{
+			"id": "ZeVFAcnTtB300BAkgcNZDNB41B01mGc53fnNNnmhYNwoo",
+			"streamName": "West",
+			"order": 2,
+			"IsSelected": false,
+			"stream_key": "0bc53050-be99-e279-46ec-3bb62ca48b16",
+			"playback_url": "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8"
+		},
+		{
+			"id": "yaRpQHaBWVGrXEAqgFviUgxUgeE3uXq5ICaIqqDwgO4",
+			"streamName": "North",
+			"order": 3,
+			"IsSelected": false,
+			"stream_key": "8782a2e8-bd53-6099-3b2d-76a268ca452e",
+			"playback_url": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8"
+		}
+	]
+}

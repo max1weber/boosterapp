@@ -33,3 +33,9 @@ body {
 
 
 }
+
+.vjs-default-skin.vjs-paused .vjs-big-play-button 
+{
+   /* Remove default play button :-) */
+  display: none;
+}

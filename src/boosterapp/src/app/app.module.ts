@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 
 import { StreamComponent } from './stream/stream.component';
+import { VideoComponent } from './video/video/video.component';
 
 
 
@@ -31,7 +32,9 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     
-    StreamComponent
+    StreamComponent,
+    
+    VideoComponent
   ],
   imports: [
     BrowserModule,

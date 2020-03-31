@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import {VideoComponent} from '../video/video/video.component';
 import { BoosterStream } from '../models/booster-stream';
 import { BoosterdataService } from '../services/boosterdata.service';
 
@@ -42,6 +42,34 @@ export class StreamComponent implements OnInit, OnDestroy {
                                 this.selectedStream = this.boosterdata.find( p=> p.streamName == this.streamName);
                                 console.log(this.selectedStream);
                             });
+  }
+
+  GetBoosterData(){
+
+    return this.boosterdata.sort(p=>p.order);
+  }
+
+  ChangeSelection(stream: BoosterStream)
+  {
+    let index =   this.boosterdata.findIndex(p=> p.id == this.selectedStream.id);
+
+    /* console.log("Current Index: " + index);
+    this.boosterdata[index].IsSelected = false;
+
+    console.log("selected stream " + stream.streamName);
+
+    let index2 =   this.boosterdata.findIndex(p=> p.id == stream.id);
+           
+    this.boosterdata[index2].IsSelected = true;
+
+    console.log("New Index: " + index2);
+
+    console.log(this.boosterdata);
+
+    this.selectedStream = this.boosterdata.find(p=>p.IsSelected == true); */
+
+    this._router.navigateByUrl("/stream/" + this.selectedStream.streamName);
+
   }
 
 }

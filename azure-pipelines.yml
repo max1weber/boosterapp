@@ -27,6 +27,6 @@ stages:
         containerRegistry: 'dockerhub_max1weber'
         repository: 'boosterapp'
         command: 'buildAndPush'
-        Dockerfile: '**/Dockerfile'
+        Dockerfile: '$(Build.SourcesDirectory)/src/boosterapp/DockerFile'
         tags: |
           $(tag)

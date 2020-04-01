@@ -18,6 +18,10 @@
   
   }
 
+  .navbar-nav{
+    margin-left: 250px;
+  }
+
 .navbar a {
     float: left;
     display: block;
@@ -26,10 +30,12 @@
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+   
 }
 
 .navbar ul {
     margin: 8px 0 0 0;
+    margin-left: 220px;
     list-style: none;
 }
 

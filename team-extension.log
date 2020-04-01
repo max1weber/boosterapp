@@ -1,0 +1,4 @@
+2020-04-01T12:47:55.294Z - info:   [05420] *** FOLDER: c:\GIT\boosterfestival\boosterapp ***
+2020-04-01T12:47:55.295Z - info:   [05420] AzureReposVSCode/1.161.0 (VSCode 1.43.1; Windows_NT 10.0.18363; Node 12.8.1)
+2020-04-01T12:47:55.305Z - warn:   [05420] TFVC Couldn't find where the TF command lives on disk.
+2020-04-01T12:47:55.306Z - error:  [05420] The path to the TFVC command line (including filename) was not found in the user settings. Please set this value (tfvc.location) and try again.

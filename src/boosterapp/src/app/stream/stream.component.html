@@ -1,29 +1,7 @@
 <div class="container full-height-grow">
 
 
-<header class="main-header">
-    <a href="/" class="brand-logo">
-      <img src="assets/boosterlogo.png" alt="logo boosterfestival" style="width: 50px;"/>
-      <div class="brand-logo-name">
-        Booster Festival
-      </div>
-       
-    </a>
-    <nav class="main-nav">
-      <ul>
-        <li>
-          <a href="https://twitter.com/BoosterFestival" target="_blank">Twitter</a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/boosterfestival/" target="_blank"> Instagram </a>
-            
-        </li>
-        <li>
-          <a href="https://boosterfestival.nl/showcasefestival-2/"  target="_blank">Booster Festival</a>
-      </li>
-    </ul>
-  </nav>
-  </header>
+
   <h2 *ngIf="selectedStream">Now Paying: {{selectedStream.streamName}}</h2>
   
   <section class="main-section" *ngIf="selectedStream">

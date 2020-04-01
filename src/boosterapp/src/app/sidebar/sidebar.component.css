@@ -1,7 +1,7 @@
 
 
 .navbar{
-    background-color: #3b5998;
+    background-color: ##009df6;
     overflow: hidden;
     height: 63px;
 }
@@ -12,10 +12,10 @@
     align-items: center;
     font-size: 1.2em;
     margin:8px 50px 8px 0px;
-  
+
      color: inherit;
      text-decoration: none;
-  
+
   }
 
   .navbar-nav{
@@ -30,7 +30,7 @@
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
-   
+
 }
 
 .navbar ul {
@@ -68,7 +68,7 @@ side-nav-passive{
 
 side-nav-passive a{
 
-   
+
     display: none;
     transition: 0.3s;
 }
@@ -87,7 +87,7 @@ side-nav-passive a{
 
 
 .side-nav a:hover {
-    
+
 
         color:  #fff;
 }
@@ -99,7 +99,7 @@ side-nav-passive a{
     font-size: 36px;
     margin-left: 30px;
 
-} 
+}
 
 .main {
     transition: 0.5s;
@@ -113,6 +113,6 @@ side-nav-passive a{
     transition: 0.5s;
     padding: 20px;
     overflow: hidden;
-    
+
     width: 100%;
 }

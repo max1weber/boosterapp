@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  boosterdatafile: "BoosterStreams.json"
+  boosterdatafile: "BoosterStreamsCopy.json"
 };

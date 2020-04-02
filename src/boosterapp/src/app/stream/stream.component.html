@@ -19,12 +19,7 @@
   </section>
 
 
-  <section class="footer-section" *ngIf="boosterdata">
-    <div *ngFor="let stream of GetBoosterData(); index as i; " >
-        <div class="streambox" *ngIf="!stream.IsSelected" (click)="ChangeSelection(stream)" >
-          <h3>Online {{stream.streamName}}</h3>
-          <img src="assets/tv_booster_2.svg" width="350px"/>
-        </div>
-    </div>
+  <section class="footer-section" *ngIf="streams">
+    
   </section>
 </div>

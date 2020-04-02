@@ -25,11 +25,19 @@
     <div id="sidemenu" [ngClass]="showSideMenu ? 'side-nav' : 'side-nav-passive'">
         <div id="wrapper" *ngIf="showSideMenu">
             <a [routerLink]="" class="btn-close" (click)="toggleMenu()">&times;</a>
-            <a href="#">East</a>
-            <a href="#">South</a>
-            <a href="#">West</a>
-            <a href="#">North</a>
+            <div *ngFor="let stream of streams ">
+               <!-- <a [routerLink]="" (click)="selectStream(stream)">{{stream.streamName}}</a> -->
+                <div class="streamboxsmall"  (click)="selectStream(stream)" >
+                    <h3>{{stream.streamName}}</h3>
+                    <img src="assets/tv_booster_2.svg" width="150px"/>
+                  </div>
+            </div>
+            
+           
         </div>
+        
+           
+       
     </div>
     <div id="main" [ngClass]="showSideMenu ? 'main' : 'main-passive'">
         <router-outlet></router-outlet>

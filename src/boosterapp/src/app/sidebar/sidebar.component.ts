@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { element } from 'protractor';
+import {  Subscription } from 'rxjs';
+
+import { BoosterStream } from '../models/booster-stream';
+import { CommunicationService } from '../services/communication.service';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -9,14 +13,51 @@ import { element } from 'protractor';
 export class SidebarComponent implements OnInit {
 
  
-  
+  streamsSub : Subscription;
+  selectedStreamSub : Subscription;
+  streams : BoosterStream[] = [];
+ selectedStream : BoosterStream =null;
   showSideMenu = true;
-  constructor() { }
+  constructor( private commSrvice: CommunicationService) { }
 
   ngOnInit(): void {
+    
+    this.streamsSub = this.commSrvice.subscribeToStreams().subscribe(result =>{
+       
+          this.streams = result;
+       
+    });
 
+    this.selectedStreamSub = this.commSrvice.subscribeToSelectStream().subscribe(selection => {
+
+      if (selection !=null && selection != undefined)
+      {
+      this.selectedStream = selection;
+      console.log("New Selected Stream " + selection.streamName);
+      }
+
+    });
+
+    this.commSrvice.loadData();
+
+   
+    
+
+   
+  }
+
+  selectStream(stream:BoosterStream)
+  {
+
+    console.log("Selected Stream: " + stream.streamName);
+    this.commSrvice.SetSelectedStream(stream);
 
   }
+  getStreamsAsync(){
+    
+    return this.streams;
+  }
+
 
   toggleMenu(){
    

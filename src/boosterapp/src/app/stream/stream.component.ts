@@ -43,10 +43,7 @@ export class StreamComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.routeSub = this.route.params.subscribe(params=>{
-      this.streamName = params["streamName"];
-
-    });
+    
 
     this.streamsSub = this.commSrvice.subscribeToStreams().subscribe(result =>{
        
@@ -64,8 +61,12 @@ export class StreamComponent implements OnInit, OnDestroy {
 
     });
 
-    this.commSrvice.loadData();
+   
+    this.routeSub = this.route.params.subscribe(params=>{
+      this.streamName = params["streamName"];
+      this.commSrvice.SetSelectedStreamByName(this.streamName);
 
+    });
 
    
 

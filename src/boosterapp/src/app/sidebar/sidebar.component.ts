@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {  Subscription } from 'rxjs';
 
 import { BoosterStream } from '../models/booster-stream';
@@ -10,7 +10,7 @@ import { CommunicationService } from '../services/communication.service';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, OnDestroy {
 
  
   streamsSub : Subscription;
@@ -19,6 +19,12 @@ export class SidebarComponent implements OnInit {
  selectedStream : BoosterStream =null;
   showSideMenu = true;
   constructor( private commSrvice: CommunicationService) { }
+  
+  
+  ngOnDestroy(): void {
+    this.streamsSub.unsubscribe();
+    this.selectedStreamSub.unsubscribe();
+  }
 
   ngOnInit(): void {
     

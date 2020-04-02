@@ -2,7 +2,7 @@ import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
 
 
-import { BoosterdataService } from './boosterdata.service';
+
 import { BoosterStream } from '../models/booster-stream';
 import { BoosterData } from '../models/booster-data';
 import { HttpClient } from '@angular/common/http';
@@ -71,6 +71,19 @@ export class CommunicationService implements OnInit, OnDestroy {
        
       });
       this._baseStreams.next(Object.assign({}, this.dataStore).streams);
+    }
+  }
+
+  public SetSelectedStreamByName(streamName: string)
+  {
+   
+   
+    if (this.dataStore.streams.length >0)
+    {
+      console.log("SetSelectedStreamByName");
+      let nextstream =this.dataStore.streams.find(p=>p.streamName==streamName);
+      this.SetSelectedStream(nextstream);
+        
     }
   }
 

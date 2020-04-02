@@ -10,6 +10,8 @@ import {
 } from '@angular/core';
 
 import { BoosterStream } from 'src/app/models/booster-stream';
+import { Subscription } from 'rxjs';
+import { CommunicationService } from 'src/app/services/communication.service';
 
 
 declare const videojs: any;
@@ -21,10 +23,12 @@ declare const videojs: any;
   styleUrls: ['./video.component.css']
 })
 export class VideoComponent implements OnInit, OnDestroy, OnChanges {
+  selectedStreamSub : Subscription;
+  selectedStream : BoosterStream =null;
+
  
  
- 
-  @Input() stream: BoosterStream;
+  //@Input() stream: BoosterStream;
   changeLog: string[] = [];
   // reference to the element itself, we use this to access events and methods
   private _elementRef: ElementRef
@@ -45,7 +49,7 @@ export class VideoComponent implements OnInit, OnDestroy, OnChanges {
 
 
 
-  constructor(elementRef: ElementRef) {
+  constructor(elementRef: ElementRef, private commSrvice: CommunicationService) {
     // this.url = false;
     this.player = false;
   }
@@ -56,13 +60,27 @@ export class VideoComponent implements OnInit, OnDestroy, OnChanges {
   
   
   ngOnInit(): void {
+    this.selectedStreamSub = this.commSrvice.subscribeToSelectStream().subscribe(selection => {
+
+      if (selection !=null && selection != undefined)
+      {
+        this.selectedStream = selection;
+        console.log("New Selected Stream " + selection.streamName);
+        this.SetupSourceUrl();
+      }
+
+    });
+
   }
 
 
   SetupSourceUrl(){
+    if (this.selectedStream != null && this.selectedStream != undefined)
+    {
     this.player = videojs(document.getElementById('boosterplayer'));
-    this.player.src(this.stream.playback_url);
+    this.player.src(this.selectedStream.playback_url);
     this.player.play();
+    }
 
   }
 
@@ -128,6 +146,8 @@ export class VideoComponent implements OnInit, OnDestroy, OnChanges {
   ngOnDestroy() {
 
      this.player.dispose();
+   
+    this.selectedStreamSub.unsubscribe();
   }
 
   seek(n) {

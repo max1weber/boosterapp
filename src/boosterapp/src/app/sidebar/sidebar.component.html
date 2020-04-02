@@ -1,0 +1,45 @@
+
+<div id="sidebar">
+    <nav class="navbar">
+        <span class="open-slide" >
+            <div>
+            <a [routerLink]="" (click)="toggleMenu()" >
+                <svg width="30" height ="30">
+                    <path d="M0,5 30,5" stroke="#fff" stroke-width="5"/>
+                    <path d="M0,14 30,14" stroke="#fff" stroke-width="5"/>
+                    <path d="M0,23 30,23" stroke="#fff" stroke-width="5"/>
+                </svg>
+            </a>
+        </div>
+        </span>
+        <ul class="navbar-nav">
+          
+            <li><a href="https://boosterfestival.nl/showcasefestival-2/" target="blank" >BoosterFestival.nl</a></li>
+            <li><a href ="https://twitter.com/BoosterFestival" target="_blank">Twitter</a></li>
+            <li><a href="https://www.instagram.com/boosterfestival/" target="_blank">Instagram</a></li>
+            <img src="assets/boosterlogo.png"  alt="logo boosterfestival" style="width: 50px;"/>
+          
+            
+        </ul>
+    </nav>
+    <div id="sidemenu" [ngClass]="showSideMenu ? 'side-nav' : 'side-nav-passive'">
+        <div id="wrapper" *ngIf="showSideMenu">
+            <a [routerLink]="" class="btn-close" (click)="toggleMenu()">&times;</a>
+            <div *ngFor="let stream of streams ">
+               <!-- <a [routerLink]="" (click)="selectStream(stream)">{{stream.streamName}}</a> -->
+                <div class="streamboxsmall"  (click)="selectStream(stream)" >
+                    <h3>{{stream.streamName}}</h3>
+                    <img src="assets/tv_booster_2.svg" width="150px"/>
+                  </div>
+            </div>
+            
+           
+        </div>
+        
+           
+       
+    </div>
+    <div id="main" [ngClass]="showSideMenu ? 'main' : 'main-passive'">
+        <router-outlet></router-outlet>
+    </div>
+</div>

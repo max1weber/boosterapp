@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {VideoComponent} from '../video/video/video.component';
+import { Subscription } from 'rxjs';
+
 import { BoosterStream } from '../models/booster-stream';
-import { BoosterdataService } from '../services/boosterdata.service';
+import { CommunicationService } from '../services/communication.service';
+
 
 
 @Component({
@@ -12,66 +14,71 @@ import { BoosterdataService } from '../services/boosterdata.service';
 })
 export class StreamComponent implements OnInit, OnDestroy {
 
-  constructor(private streamService: BoosterdataService,private _router: Router, private route: ActivatedRoute) {
-     
 
-   // console.log(this.route.snapshot.params);
-   // console.log(this.route.snapshot.data);
+  streamsSub : Subscription;
+  selectedStreamSub : Subscription;
+  streams : BoosterStream[] = [];
+ selectedStream : BoosterStream =null;
+ private routeSub: any;
+ streamName : string='';
+
+
+  constructor(private commSrvice: CommunicationService,private _router: Router, private route: ActivatedRoute) {
+     
+  
 
    }
 
 
   ngOnDestroy(): void {
     this.routeSub.unsubcribe();
+    this.streamsSub.unsubscribe();
+    this.selectedStreamSub.unsubscribe();
   }
 
-  streamName :string;
-  selectedStream :BoosterStream;
-  boosterdata:BoosterStream[];
-  private routeSub: any;
+ 
+  
 
   ngOnInit(): void {
 
-    this.routeSub = this.route.params.subscribe(params=>{
-      this.streamName = params["streamName"];
+    
+
+    this.streamsSub = this.commSrvice.subscribeToStreams().subscribe(result =>{
+       
+      this.streams = result;
+   
+    });
+
+    this.selectedStreamSub = this.commSrvice.subscribeToSelectStream().subscribe(selection => {
+
+      if (selection !=null && selection != undefined)
+      {
+      this.selectedStream = selection;
+      console.log("New Selected Stream " + selection.streamName);
+      }
 
     });
-    this.streamService.getBoosterData()
-                          .subscribe(
-                            data => {
-                                this.boosterdata = data.streams; 
-                                console.log("From Route: " + this.streamName);
-                                this.selectedStream = this.boosterdata.find( p=> p.streamName == this.streamName);
-                                this.selectedStream.IsSelected =true;
-                                console.log(this.selectedStream);
-                            });
+
+   
+    this.routeSub = this.route.params.subscribe(params=>{
+      this.streamName = params["streamName"];
+      this.commSrvice.SetSelectedStreamByName(this.streamName);
+
+    });
+
+   
+
+                            
   }
 
   GetBoosterData(){
 
-    return this.boosterdata.sort(p=>p.order);
+    return this.streams.sort(p=>p.order);
   }
 
   ChangeSelection(stream: BoosterStream)
   {
-    let index =   this.boosterdata.findIndex(p=> p.id == this.selectedStream.id);
-
-     console.log("Current Index: " + index);
-    this.boosterdata[index].IsSelected = false;
-
-    console.log("selected stream " + stream.streamName);
-
-    let index2 =   this.boosterdata.findIndex(p=> p.id == stream.id);
-           
-    this.boosterdata[index2].IsSelected = true;
-
-    console.log("New Index: " + index2);
-
-    console.log(this.boosterdata);
-
-    this.selectedStream = this.boosterdata.find(p=>p.IsSelected == true); 
-
-    this._router.navigateByUrl("/stream/" + this.selectedStream.streamName);
+    this.commSrvice.SetSelectedStream(stream);
 
   }
 

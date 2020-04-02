@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 
 import { StreamComponent } from './stream/stream.component';
 import { VideoComponent } from './video/video/video.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 
@@ -34,7 +35,9 @@ const appRoutes: Routes = [
     
     StreamComponent,
     
-    VideoComponent
+    VideoComponent,
+    
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

@@ -127,17 +127,21 @@ side-nav-passive a{
      display: block;
      text-align: left;
      text-transform: uppercase;
+     margin: 6px;
    
    }
 
    .streamboxsmall:hover{
     color: crimson;
     font-style: italic;
+    border-style: 5px solid rgb(223, 219, 219);
    }
   
    .streamboxsmall h3{
    
+    margin-top: 5px;
      margin-left: 50px;
+     margin-bottom: 50px;
     
     
    }
@@ -155,10 +159,8 @@ side-nav-passive a{
        
        min-height: 200px;
        padding-left: 250px;
-       background-color: beige;
-       overflow: hidden;
+     
+       overflow-y: scroll;
    }
 
-   .footer-section h2{
-       color: #009df6;
-   }
+   

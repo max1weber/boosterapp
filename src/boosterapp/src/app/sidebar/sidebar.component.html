@@ -43,10 +43,9 @@
     <div id="main" [ngClass]="showSideMenu ? 'main' : 'main-passive'">
         <router-outlet></router-outlet>
     </div>
-    <section  class="footer-section" *ngIf="streams">
-        <div>
-            <h2>Chats</h2>
-        </div>
+   
+            <app-chat></app-chat>
+        
     
-    </section>
+   
 </div>

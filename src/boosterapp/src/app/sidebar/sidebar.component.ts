@@ -20,7 +20,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   routeSub : Subscription;
   streams : BoosterStream[] = [];
  selectedStream : BoosterStream =null;
-  showSideMenu = true;
+  showSideMenu = false;
+  
   constructor( private commSrvice: CommunicationService,private _router: Router, private route: ActivatedRoute) { }
   
   

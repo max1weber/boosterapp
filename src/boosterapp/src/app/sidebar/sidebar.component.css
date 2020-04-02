@@ -1,7 +1,10 @@
 
-
+#sidebar{
+    background-color: #009df6;
+    overflow: hidden;
+}
 .navbar{
-    background-color: ##009df6;
+    background-color: #009df6;
     overflow: hidden;
     height: 63px;
 }
@@ -126,6 +129,11 @@ side-nav-passive a{
      text-transform: uppercase;
    
    }
+
+   .streamboxsmall:hover{
+    color: crimson;
+    font-style: italic;
+   }
   
    .streamboxsmall h3{
    
@@ -141,4 +149,16 @@ side-nav-passive a{
     
      filter: drop-shadow(0 0 0.75rem crimson);
     
+   }
+
+   .footer-section{
+       
+       min-height: 200px;
+       padding-left: 250px;
+       background-color: beige;
+       overflow: hidden;
+   }
+
+   .footer-section h2{
+       color: #009df6;
    }

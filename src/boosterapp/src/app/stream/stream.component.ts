@@ -25,9 +25,7 @@ export class StreamComponent implements OnInit, OnDestroy {
 
   constructor(private commSrvice: CommunicationService,private _router: Router, private route: ActivatedRoute) {
      
-    
-   // console.log(this.route.snapshot.params);
-   // console.log(this.route.snapshot.data);
+  
 
    }
 

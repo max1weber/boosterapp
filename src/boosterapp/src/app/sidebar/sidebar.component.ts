@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import {  Subscription } from 'rxjs';
 
 import { BoosterStream } from '../models/booster-stream';
 import { CommunicationService } from '../services/communication.service';
+
 
 
 @Component({
@@ -15,10 +17,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
  
   streamsSub : Subscription;
   selectedStreamSub : Subscription;
+  routeSub : Subscription;
   streams : BoosterStream[] = [];
  selectedStream : BoosterStream =null;
   showSideMenu = true;
-  constructor( private commSrvice: CommunicationService) { }
+  constructor( private commSrvice: CommunicationService,private _router: Router, private route: ActivatedRoute) { }
   
   
   ngOnDestroy(): void {
@@ -28,6 +31,10 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     
+
+    
+
+
     this.streamsSub = this.commSrvice.subscribeToStreams().subscribe(result =>{
        
           this.streams = result;
@@ -46,7 +53,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
     this.commSrvice.loadData();
 
-   
+    
     
 
    
@@ -57,6 +64,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
     console.log("Selected Stream: " + stream.streamName);
     this.commSrvice.SetSelectedStream(stream);
+    this._router.navigateByUrl('/stream/' + stream.streamName);
+    
 
   }
   getStreamsAsync(){

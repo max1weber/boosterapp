@@ -42,6 +42,10 @@
     </div>
     <div id="main" [ngClass]="showSideMenu ? 'main' : 'main-passive'">
         <router-outlet></router-outlet>
+        <section class="timetable" *ngIf="selectedStream">
+            <img src="../../assets/{{selectedStream.streamName}}-timetable.jpg"  >
+          
+          </section>
     </div>
    
             <app-chat></app-chat>

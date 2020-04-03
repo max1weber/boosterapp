@@ -48,7 +48,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
       if (selection !=null && selection != undefined)
       {
       this.selectedStream = selection;
-      console.log("New Selected Stream " + selection.streamName);
+     
       }
 
     });

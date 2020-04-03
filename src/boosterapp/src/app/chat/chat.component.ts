@@ -32,7 +32,7 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
     this.items = firebase.list<chatmessage>('chatmessage');
 
     this.firebase.list<chatmessage>('chatmessage').valueChanges().subscribe(res => {
-        console.log(res)//should give you the array of percentage. 
+        
         this.messages = res;
     })
 
@@ -151,11 +151,11 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
      if (this.messages.length>0)
      {
 
-     // this.analytics.eventEmitter("ChatComponent.SendMessage","Chat", "Send Message" , "Value", this.messages.length);
+      this.analytics.eventEmitter("ChatComponent.SendMessage","Chat", "Send Message" , "Value", this.messages.length);
      }
 
      
-     console.log(message);
+     ;
      
     this.items.push(message);
     this.msgVal = "";

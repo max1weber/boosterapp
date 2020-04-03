@@ -1,7 +1,10 @@
 
-
+#sidebar{
+    background-color: #009df6;
+    overflow: hidden;
+}
 .navbar{
-    background-color: ##009df6;
+    background-color: #009df6;
     overflow: hidden;
     height: 63px;
 }
@@ -25,11 +28,15 @@
 .navbar a {
     float: left;
     display: block;
-    color: antiquewhite;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 14px;
+    font-family: "Open Sans";
+    font-weight: 600;
+    line-height: 21px;
+    text-transform: uppercase;
 
 }
 
@@ -40,8 +47,8 @@
 }
 
 .navbar a:hover{
-    background-color: #ddd;
-    color: black;
+   
+    color: white;
 }
 
 .side-nav{
@@ -107,6 +114,14 @@ side-nav-passive a{
     overflow: hidden;
     margin-left: 250px;
     width: 100%;
+    background-repeat: no-repeat; 
+    background-image: url("https://boosterfestival.nl/wordpress/wp-content/uploads/2017/02/TOP-e1572450869919.jpg")!important;   
+    background-size: cover; 
+    background-position: center top; 
+     height: 100%; 
+     opacity: 1; 
+     visibility: inherit; 
+     z-index: 20;
 }
 
 .main-passive {
@@ -115,6 +130,16 @@ side-nav-passive a{
     overflow: hidden;
 
     width: 100%;
+
+    background-repeat: no-repeat; 
+    background-image: url("https://boosterfestival.nl/wordpress/wp-content/uploads/2017/02/TOP-e1572450869919.jpg")!important;   
+    background-size: cover; 
+    background-position: center top; 
+     height: 100%; 
+     opacity: 1; 
+     visibility: inherit; 
+     z-index: 20;
+   
 }
 
 .streamboxsmall{
@@ -124,12 +149,21 @@ side-nav-passive a{
      display: block;
      text-align: left;
      text-transform: uppercase;
+     margin: 6px;
    
+   }
+
+   .streamboxsmall:hover{
+    color: crimson;
+    font-style: italic;
+    border-style: 5px solid rgb(223, 219, 219);
    }
   
    .streamboxsmall h3{
    
+    margin-top: 5px;
      margin-left: 50px;
+     margin-bottom: 50px;
     
     
    }
@@ -142,3 +176,13 @@ side-nav-passive a{
      filter: drop-shadow(0 0 0.75rem crimson);
     
    }
+
+   .footer-section{
+       
+       min-height: 200px;
+       padding-left: 250px;
+     
+       overflow-y: scroll;
+   }
+
+   

@@ -4,11 +4,18 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AngularFireModule  } from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth'
+import { FormsModule } from '@angular/forms'
+
 
 
 import { StreamComponent } from './stream/stream.component';
 import { VideoComponent } from './video/video/video.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { environment } from 'src/environments/environment';
+import { ChatComponent } from './chat/chat.component';
+
 
 
 
@@ -32,19 +39,20 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    
     StreamComponent,
-    
     VideoComponent,
-    
-    SidebarComponent
+    SidebarComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes, { enableTracing: false}),
-    AppRoutingModule
-  ],
+    AppRoutingModule,
+    FormsModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebase)
+ ],
   providers: [],
   bootstrap: [AppComponent]
 })

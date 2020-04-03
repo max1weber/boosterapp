@@ -4,6 +4,7 @@ import {  Subscription } from 'rxjs';
 
 import { BoosterStream } from '../models/booster-stream';
 import { CommunicationService } from '../services/communication.service';
+import { GoogleAnalyticsService } from '../services/google-analytics.service';
 
 
 
@@ -20,8 +21,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
   routeSub : Subscription;
   streams : BoosterStream[] = [];
  selectedStream : BoosterStream =null;
-  showSideMenu = true;
-  constructor( private commSrvice: CommunicationService,private _router: Router, private route: ActivatedRoute) { }
+  showSideMenu = false;
+  
+  constructor( private commSrvice: CommunicationService,private _router: Router, private route: ActivatedRoute, private analytics: GoogleAnalyticsService) { }
   
   
   ngOnDestroy(): void {
@@ -63,6 +65,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   {
 
     console.log("Selected Stream: " + stream.streamName);
+    this.analytics.eventEmitter("sideBar.selectStream", "Stream", "Select Stream" , "Value", stream.order);
+   
     this.commSrvice.SetSelectedStream(stream);
     this._router.navigateByUrl('/stream/' + stream.streamName);
     

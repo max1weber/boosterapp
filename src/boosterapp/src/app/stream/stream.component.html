@@ -1,9 +1,9 @@
 <div class="container full-height-grow">
 
 
-
-  <h2 *ngIf="selectedStream">Now Playing: {{selectedStream.streamName}}</h2>
-  
+<div class="streamheader">
+  <h2 *ngIf="selectedStream">Now Playing  '{{selectedStream.streamName}}'</h2>
+</div>
   <section class="main-section" *ngIf="selectedStream">
 
     <div class="main-section-header">
@@ -19,7 +19,5 @@
   </section>
 
 
-  <section class="footer-section" *ngIf="streams">
-    
-  </section>
+  
 </div>

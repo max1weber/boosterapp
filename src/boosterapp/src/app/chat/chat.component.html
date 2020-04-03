@@ -1,0 +1,59 @@
+<div id="chatWrapper">
+  
+
+
+<div class="chat-box" *ngIf="showChat">
+    <div class="chat-box-header">
+      <span class="chat-box-toggle" (click)="toggleChat()"><i class="material-icons">&times;</i></span>
+      <div *ngIf="!userData">
+        Login to Booster Chat 
+      </div>
+      <div *ngIf="userData">
+        Booster Chat
+      </div>
+      <div *ngIf="!userData"> 
+
+        <div class="loginbox"> 
+      
+          <a  [routerLink] (click)="FBlogin()"  >
+            <img src="../../assets/auth_service_facebook.svg" width="20px" height="20px"/>
+          </a>
+          <a [routerLink] (click)="Googlelogin()"  >
+            <img src="../../assets/auth_service_google.svg" width="20px" height="20px"/>
+          </a>
+          <a [routerLink] (click)="MSlogin()"  >
+            <img src="../../assets/auth_service_mslive.svg" width="20px" height="20px"/>
+          </a>
+          <a [routerLink] class="button7"(click)="SignOut()" *ngIf="userData" >SignOut</a>
+         
+         </div>
+    </div>
+    
+       
+    </div>
+    <div class="chat-box-body">
+      <div class="chat-box-overlay">   
+      </div>
+      <div class="chat-logs" #scrollMe>
+       <div *ngFor="let msg of messages">
+           <div [ngClass]="getMsgClass(msg)">
+                <span class="msg-avatar"> <img src="{{msg.photoURL}}"></span>
+                <div class="cm-msg-text"><span style="font-size: smaller;">{{msg.displayName}} says:</span><br/>  '{{msg.content}}'</div>
+            </div>
+
+       </div>
+      </div><!--chat-log -->
+    </div>
+    <div class="chat-input" >      
+     
+        <input type="text" id="chat-input" placeholder="Enter chatmessage here... (plus enter)"  (keyup.enter)="SendMessage($event.target.value)" [(ngModel)]="msgVal" *ngIf="userData" />
+        
+     </div>
+  </div>
+  <a [routerLink] (click)="toggleChat()" *ngIf="!showChat" class="showchatimg">
+    <img src="../../assets/white-chat-icon-467078.png" width="75px" height="75px" alt="show chat"  >
+  </a>
+ 
+ 
+  
+</div>

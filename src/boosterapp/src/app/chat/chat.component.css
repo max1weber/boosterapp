@@ -13,47 +13,10 @@
   }
 
 
-.chat{
-   
-    max-width: 100%;
-    max-height: 250px;
-    padding-left: 250px;
-}
-
-
-
-.chatlist ul {
-    margin: 8px 0 0 0;
-    margin-left: 20px;
-    list-style: none;
-}
 
 
 
 
-.chatbutton {
-	box-shadow: 3px 5px 5px 0px #899599;
-	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
-	background-color:#ededed;
-	border-radius:15px;
-	border:2px solid #878087;
-	display:inline-block;
-	cursor:pointer;
-	color:#1e3f47;
-	font-family:Verdana;
-	font-size:12px;
-	padding:1px 36px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #e1e2ed;
-}
-.chatbutton:hover {
-	background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
-	background-color:#bab1ba;
-}
-.chatbutton:active {
-	position:relative;
-	top:1px;
-}
 
 a.button7{
     
@@ -256,8 +219,8 @@ a.button7{
   .showchatimg{
     
     position: absolute;
-    top: 90vh;
-    right: 5%;
+    top: 80vh;
+    right: 7%;
   }
 
 

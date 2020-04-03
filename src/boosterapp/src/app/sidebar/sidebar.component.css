@@ -112,7 +112,6 @@ side-nav-passive a{
     transition: 0.5s;
     padding: 20px;
     overflow: hidden;
-    margin-left: 250px;
     width: 100%;
     background-repeat: no-repeat; 
     background-image: url("https://boosterfestival.nl/wordpress/wp-content/uploads/2017/02/TOP-e1572450869919.jpg")!important;   
@@ -124,28 +123,12 @@ side-nav-passive a{
      z-index: 20;
 }
 
-.main-passive {
-    transition: 0.5s;
-    padding: 20px;
-    overflow: hidden;
 
-    width: 100%;
-
-    background-repeat: no-repeat; 
-    background-image: url("https://boosterfestival.nl/wordpress/wp-content/uploads/2017/02/TOP-e1572450869919.jpg")!important;   
-    background-size: cover; 
-    background-position: center top; 
-     height: 100%; 
-     opacity: 1; 
-     visibility: inherit; 
-     z-index: 20;
-   
-}
 
 .streamboxsmall{
     text-align: center;
     cursor: pointer;
-     min-width: 150px;
+     min-width: 250px;
      display: block;
      text-align: left;
      text-transform: uppercase;
@@ -159,21 +142,15 @@ side-nav-passive a{
     border-style: 5px solid rgb(223, 219, 219);
    }
   
-   .streamboxsmall h3{
-   
-    margin-top: 5px;
-     margin-left: 50px;
-     margin-bottom: 50px;
-    
-    
-   }
+  
    
    
    
    .streamboxsmall img{
    
     
-     filter: drop-shadow(0 0 0.75rem crimson);
+    border-radius: 3px;
+    /* filter: drop-shadow(0 0 0.75rem crimson);*/
     
    }
 

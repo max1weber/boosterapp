@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,11 +10,13 @@ import { FormsModule } from '@angular/forms'
 
 
 
+
 import { StreamComponent } from './stream/stream.component';
 import { VideoComponent } from './video/video/video.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { environment } from 'src/environments/environment';
 import { ChatComponent } from './chat/chat.component';
+import { GlobalErrorHandler } from './shared/global-error-handler';
 
 
 
@@ -50,10 +52,16 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, { enableTracing: false}),
     AppRoutingModule,
     FormsModule,
+    
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase)
  ],
-  providers: [],
+  providers: [
+    {
+      provide: ErrorHandler, 
+      useClass: GlobalErrorHandler
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

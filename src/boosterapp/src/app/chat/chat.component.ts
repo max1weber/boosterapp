@@ -7,6 +7,8 @@ import { auth } from 'firebase';
 import { User } from '../shared/user';
 import { chatmessage } from '../shared/ChatMessage';
 import { GoogleAnalyticsService } from '../services/google-analytics.service';
+import { ApplicationInsightService } from '../services/application-insight.service';
+
 
 
 
@@ -26,7 +28,7 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
   items: AngularFireList<chatmessage>;
   messages : chatmessage[];
 
-  constructor(private firebase: AngularFireDatabase, public af: AngularFireAuth, private analytics: GoogleAnalyticsService) {
+  constructor(private firebase: AngularFireDatabase, public af: AngularFireAuth, private analytics: GoogleAnalyticsService, private appinsights: ApplicationInsightService) {
     this.items = firebase.list<chatmessage>('chatmessage');
 
     this.firebase.list<chatmessage>('chatmessage').valueChanges().subscribe(res => {
@@ -38,9 +40,11 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
+        this.appinsights.setUserId(this.userData.displayName);
         JSON.parse(localStorage.getItem('user'));
       } else {
         localStorage.setItem('user', null);
+        this.appinsights.clearUserId();
         JSON.parse(localStorage.getItem('user'));
       }
     })
@@ -104,6 +108,7 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
     .then((result) => {
        
      this.SetUserData(result.user);
+     
     }).catch((error) => {
       window.alert(error)
     })
@@ -127,6 +132,7 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
     return this.af.signOut().then(() => {
       
       localStorage.removeItem('user');
+      this.appinsights.clearUserId();
      this.userData = null;
     }, error => console.log(error))
   }

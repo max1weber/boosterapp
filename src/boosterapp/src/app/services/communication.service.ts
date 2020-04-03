@@ -7,6 +7,7 @@ import { BoosterStream } from '../models/booster-stream';
 import { BoosterData } from '../models/booster-data';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { ApplicationInsightService } from './application-insight.service';
 
 
 
@@ -24,7 +25,7 @@ export class CommunicationService implements OnInit, OnDestroy {
   private _selectedStream = new BehaviorSubject<BoosterStream>(null);
 
 
-  constructor( private httpClient : HttpClient) {
+  constructor( private httpClient : HttpClient, private appInsights: ApplicationInsightService) {
    
     
 
@@ -54,7 +55,8 @@ export class CommunicationService implements OnInit, OnDestroy {
   
   public SetSelectedStream(streamItem: BoosterStream)
   {
-   
+    let  prop: {[key: string]: string} = {"newStream": streamItem.streamName };
+    this.appInsights.logEvent("StreamSelected", prop );
     if (this.dataStore.streams.length >0)
     {
       this.dataStore.streams.forEach((stream,index) =>{
@@ -62,10 +64,10 @@ export class CommunicationService implements OnInit, OnDestroy {
         {
           stream.IsSelected == true;
           this._selectedStream.next(streamItem);
-          console.log("Selected : " + streamItem.streamName );
+          
         }
         else{
-          console.log("Unselected : " + stream.streamName );
+         
           stream.IsSelected == false;
         }
        
@@ -80,7 +82,7 @@ export class CommunicationService implements OnInit, OnDestroy {
    
     if (this.dataStore.streams.length >0)
     {
-      console.log("SetSelectedStreamByName");
+      //console.log("SetSelectedStreamByName");
       let nextstream =this.dataStore.streams.find(p=>p.streamName==streamName);
       this.SetSelectedStream(nextstream);
         
@@ -90,13 +92,13 @@ export class CommunicationService implements OnInit, OnDestroy {
   public loadData() {
     var boosterdatafile = environment.boosterdatafile;
     let numberofitems = this.dataStore.streams.length;
-    console.log("MemoryItems :" +numberofitems.toString());
+   
     if (numberofitems ==0)
     {
-      console.log("Stream Source Fetching: " + boosterdatafile);
       this.httpClient.get<BoosterData>("./assets/" + boosterdatafile).subscribe(result => {
         if (result !=null && result != undefined)
         {
+          this.appInsights.logEvent("SourcesFetched");
           this.dataStore.streams = result.streams;
           this._baseStreams.next(Object.assign({}, this.dataStore).streams);
          let _selectedStreamItem = this.dataStore.streams.find(p=>p.IsSelected == true);

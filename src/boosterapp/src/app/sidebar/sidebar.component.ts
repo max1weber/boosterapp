@@ -65,7 +65,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   {
 
     console.log("Selected Stream: " + stream.streamName);
-    this.analytics.eventEmitter("sideBar.selectStream", "Stream", "Select Stream" , "Value", stream.order);
+    //this.analytics.eventEmitter("sideBar.selectStream", "Stream", "Select Stream" , "Value", stream.order);
    
     this.commSrvice.SetSelectedStream(stream);
     this._router.navigateByUrl('/stream/' + stream.streamName);

@@ -65,7 +65,7 @@ export class VideoComponent implements OnInit, OnDestroy, OnChanges {
       if (selection !=null && selection != undefined)
       {
         this.selectedStream = selection;
-        console.log("New Selected Stream " + selection.streamName);
+        
         this.SetupSourceUrl();
       }
 
@@ -87,7 +87,7 @@ export class VideoComponent implements OnInit, OnDestroy, OnChanges {
   ngAfterViewInit() {
     const self = this;
     this.player = videojs(document.getElementById('boosterplayer'));
-    console.log(this.player);
+   
     this.player.muted(false);
     this.player.au
    
@@ -97,7 +97,7 @@ export class VideoComponent implements OnInit, OnDestroy, OnChanges {
       let time;
       let seekPercent;
       // this.player.controls(true);
-      console.log(this.player.currentTime(), this.getDuration(this.player));
+    
 
       // if(duration) {
       //   this.seekbarTracker.duration = duration;

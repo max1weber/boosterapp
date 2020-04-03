@@ -50,9 +50,12 @@
         
      </div>
   </div>
-  <a [routerLink] (click)="toggleChat()" *ngIf="!showChat" class="showchatimg">
+  <a [routerLink] (click)="toggleChat()" id="showchatimg" *ngIf="!showChat"  class="showchatimg">
     
-    <img src="../../assets/white-chat-icon-467078.png" width="40px" height="40px" alt="show chat"  >
+  
+      <picture id="showchatpic" [attr.data-content-after]="getMessageCount()">
+        <img src="../../assets/white-chat-icon-467078.png"   width="40px" height="40px" alt="show chat"  >
+      </picture>
   </a>
  
  

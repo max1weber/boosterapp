@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { ApplicationInsightService } from './services/application-insight.service';
 
 //declare gives Angular app access to ga function
 declare let gtag: Function;
@@ -12,13 +13,14 @@ declare let gtag: Function;
 export class AppComponent {
   title = 'boosterapp';
 
-  constructor(public router: Router){
+  constructor(public router: Router, private appinsights : ApplicationInsightService){
 
     this.router.events.subscribe(event => {
       if(event instanceof NavigationEnd){
 
-        console.log(event.urlAfterRedirects);
+        
         // gtag('config', 'UA-96184893-1', {'page_path': event.urlAfterRedirects});
+       // this.appinsights.logPageView(event.url, event.urlAfterRedirects);
       }
     })
   }

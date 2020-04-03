@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { auth } from 'firebase';
 import { User } from '../shared/user';
 import { chatmessage } from '../shared/ChatMessage';
+import { GoogleAnalyticsService } from '../services/google-analytics.service';
 
 
 
@@ -25,7 +26,7 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
   items: AngularFireList<chatmessage>;
   messages : chatmessage[];
 
-  constructor(private firebase: AngularFireDatabase, public af: AngularFireAuth) {
+  constructor(private firebase: AngularFireDatabase, public af: AngularFireAuth, private analytics: GoogleAnalyticsService) {
     this.items = firebase.list<chatmessage>('chatmessage');
 
     this.firebase.list<chatmessage>('chatmessage').valueChanges().subscribe(res => {
@@ -141,7 +142,13 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
         messageid : this.userData.uid.toLowerCase()
       
      }
+     if (this.messages.length>0)
+     {
 
+      this.analytics.eventEmitter("ChatComponent.SendMessage","Chat", "Send Message" , "Value", this.messages.length);
+     }
+
+     
      console.log(message);
      
     this.items.push(message);

@@ -28,6 +28,7 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
   items: AngularFireList<chatmessage>;
   messages : chatmessage[];
 
+
   constructor(private firebase: AngularFireDatabase, public af: AngularFireAuth, private analytics: GoogleAnalyticsService, private appinsights: ApplicationInsightService) {
     this.items = firebase.list<chatmessage>('chatmessage');
 
@@ -72,6 +73,9 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
     } catch(err) { }  
   }
 
+  getMessageCount(){
+   return this.messages? this.messages.length.toString() : "0";
+  }
 
   getMsgClass(msg: chatmessage)
  {

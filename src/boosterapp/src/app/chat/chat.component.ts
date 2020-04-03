@@ -145,7 +145,7 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
      if (this.messages.length>0)
      {
 
-      this.analytics.eventEmitter("ChatComponent.SendMessage","Chat", "Send Message" , "Value", this.messages.length);
+     // this.analytics.eventEmitter("ChatComponent.SendMessage","Chat", "Send Message" , "Value", this.messages.length);
      }
 
      

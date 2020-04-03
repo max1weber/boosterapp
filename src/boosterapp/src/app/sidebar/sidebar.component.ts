@@ -21,7 +21,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   routeSub : Subscription;
   streams : BoosterStream[] = [];
  selectedStream : BoosterStream =null;
-  showSideMenu = false;
+  showSideMenu = true;
   
   constructor( private commSrvice: CommunicationService,private _router: Router, private route: ActivatedRoute, private analytics: GoogleAnalyticsService) { }
   
@@ -65,7 +65,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   {
 
     console.log("Selected Stream: " + stream.streamName);
-    this.analytics.eventEmitter("sideBar.selectStream", "Stream", "Select Stream" , "Value", stream.order);
+    //this.analytics.eventEmitter("sideBar.selectStream", "Stream", "Select Stream" , "Value", stream.order);
    
     this.commSrvice.SetSelectedStream(stream);
     this._router.navigateByUrl('/stream/' + stream.streamName);

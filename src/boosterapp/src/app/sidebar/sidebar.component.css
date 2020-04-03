@@ -185,4 +185,21 @@ side-nav-passive a{
        overflow-y: scroll;
    }
 
+   .timetable
+   {
+        width: 100%;
+        justify-content: stretch;
+
+
+   }
+
+   .timetable img{
+            width: 80%;
+            justify-self: center;
+            margin-left: 7%;
+            border: 2px solid black;
+            border-radius: 5px;
+
+   }
+
    

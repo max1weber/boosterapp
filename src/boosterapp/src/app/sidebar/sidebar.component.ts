@@ -21,7 +21,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   routeSub : Subscription;
   streams : BoosterStream[] = [];
  selectedStream : BoosterStream =null;
-  showSideMenu = false;
+  showSideMenu = true;
   
   constructor( private commSrvice: CommunicationService,private _router: Router, private route: ActivatedRoute, private analytics: GoogleAnalyticsService) { }
   

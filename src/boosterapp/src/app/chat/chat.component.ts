@@ -71,15 +71,32 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
   getMsgClass(msg: chatmessage)
  {
 
+  if (this.userData)
+  {
     return (msg.messageid ==this.userData.uid.toLowerCase() )? "chat-msg self" : "chat-msg user";
-  
+  }else
+  {
+    return "chat-msg user";
+  }
  }
 
-  login(){
+  FBlogin(){
 
       this.AuthLogin(new auth.FacebookAuthProvider());
 
   }
+  MSlogin(){
+
+    var provider = new auth.OAuthProvider('microsoft.com');
+    this.AuthLogin(provider);
+
+}
+
+  Googlelogin(){
+
+    this.AuthLogin(new auth.GoogleAuthProvider());
+
+}
 
   AuthLogin(provider) {
     return this.af.signInWithPopup(provider)
@@ -92,6 +109,7 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
   }
 
   SetUserData(user:any) {
+    
     
     const userData: User = {
       uid: user.uid,

@@ -4,10 +4,32 @@
 
 <div class="chat-box" *ngIf="showChat">
     <div class="chat-box-header">
-      Booster Chat
-      <a [routerLink] class="button7"(click)="login()" *ngIf="!userData" >SignIn</a>
-        <a [routerLink] class="button7"(click)="SignOut()" *ngIf="userData" >SignOut</a>
       <span class="chat-box-toggle" (click)="toggleChat()"><i class="material-icons">&times;</i></span>
+      <div *ngIf="!userData">
+        Login to Booster Chat 
+      </div>
+      <div *ngIf="userData">
+        Booster Chat
+      </div>
+      <div *ngIf="!userData"> 
+
+        <div class="loginbox"> 
+      
+          <a  [routerLink] (click)="FBlogin()"  >
+            <img src="../../assets/auth_service_facebook.svg" width="20px" height="20px"/>
+          </a>
+          <a [routerLink] (click)="Googlelogin()"  >
+            <img src="../../assets/auth_service_google.svg" width="20px" height="20px"/>
+          </a>
+          <a [routerLink] (click)="MSlogin()"  >
+            <img src="../../assets/auth_service_mslive.svg" width="20px" height="20px"/>
+          </a>
+          <a [routerLink] class="button7"(click)="SignOut()" *ngIf="userData" >SignOut</a>
+         
+         </div>
+    </div>
+    
+       
     </div>
     <div class="chat-box-body">
       <div class="chat-box-overlay">   

@@ -232,6 +232,7 @@ a.button7{
     position:relative;
     margin-bottom:20px;
     border-radius:30px;
+    font-size: smaller;
   }
   .chat-msg {
     clear:both;    

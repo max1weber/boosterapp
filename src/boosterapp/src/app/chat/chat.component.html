@@ -38,7 +38,7 @@
        <div *ngFor="let msg of messages">
            <div [ngClass]="getMsgClass(msg)">
                 <span class="msg-avatar"> <img src="{{msg.photoURL}}"></span>
-                <div class="cm-msg-text"><span style="font-size: small;">{{msg.displayName}}:</span>  '{{msg.content}}'</div>
+                <div class="cm-msg-text"><span style="font-size: smaller;">{{msg.displayName}} says:</span><br/>  '{{msg.content}}'</div>
             </div>
 
        </div>

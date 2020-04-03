@@ -6,7 +6,7 @@
 .navbar{
     background-color: #009df6;
     overflow: hidden;
-    height: 63px;
+    height: 48px;
 }
 
 .navbar img{
@@ -30,7 +30,7 @@
     display: block;
     color: black;
     text-align: center;
-    padding: 14px 16px;
+    padding: 10px 10px;
     text-decoration: none;
     font-size: 14px;
     font-family: "Open Sans";
@@ -41,7 +41,7 @@
 }
 
 .navbar ul {
-    margin: 8px 0 0 0;
+    margin: 4px 0 4px 0;
     margin-left: 220px;
     list-style: none;
 }

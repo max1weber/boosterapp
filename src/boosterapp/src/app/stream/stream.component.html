@@ -3,7 +3,8 @@
 
 <div class="streamheader">
   <h2 *ngIf="selectedStream">Now Playing  '{{selectedStream.streamName}}'</h2>
-  <h2 *ngIf="!selectedStream">Choose a Stream to watch'</h2>
+  <h2 *ngIf="!selectedStream">Choose a Stream  '{{selectedStream.streamName}}'</h2>
+ 
 </div>
   <section class="main-section" *ngIf="selectedStream">
 
@@ -15,14 +16,7 @@
     </div>
 
   </section>
-  <section class="main-section" *ngIf="!selectedStream">
-
-   
-    <div class="main-section-content">
-       <img src="https://boosterfestival.nl/wordpress/wp-content/uploads/2020/04/BOOSTERTIMETABLE-3april.jpg" width="1080"/>
-    </div>
-
-  </section>
+  
   
 
   

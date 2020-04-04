@@ -24,7 +24,7 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
   showChat=false;
   userData:User;
   msgVal :string = "";
-  
+  disableScrollDown = false
   items: AngularFireList<chatmessage>;
   messages : chatmessage[];
 
@@ -35,6 +35,7 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
     this.firebase.list<chatmessage>('chatmessage').valueChanges().subscribe(res => {
         
         this.messages = res;
+        
     })
 
     this.af.authState.subscribe(user => {
@@ -51,6 +52,7 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
     })
    }
   ngAfterViewChecked(): void {
+    
     this.scrollToBottom();
   }
 
@@ -69,7 +71,16 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
 
   scrollToBottom() {
     try {
-      this.myMsgContainer.nativeElement.scrollTop = this.myMsgContainer.nativeElement.scrollHeight;
+
+      let element = this.myMsgContainer.nativeElement
+        let atBottom = element.scrollHeight - element.scrollTop === element.clientHeight
+        if (this.disableScrollDown && atBottom) {
+            this.disableScrollDown = false
+        } else {
+          this.myMsgContainer.nativeElement.scrollTop = this.myMsgContainer.nativeElement.scrollHeight;
+            this.disableScrollDown = true
+        }
+      
     } catch(err) { }  
   }
 
@@ -152,17 +163,24 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
         messageid : this.userData.uid.toLowerCase()
       
      }
+     this.items.push(message);
+     this.disableScrollDown=false;
+     
      if (this.messages.length>0)
      {
 
       this.analytics.eventEmitter("ChatComponent.SendMessage","Chat", "Send Message" , "Value", this.messages.length);
+      
      }
 
      
-     ;
      
-    this.items.push(message);
+     
+    
+    
     this.msgVal = "";
+   
+    
 
   }
 }

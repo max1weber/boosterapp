@@ -3,6 +3,8 @@
 
 <div class="streamheader">
   <h2 *ngIf="selectedStream">Now Playing  '{{selectedStream.streamName}}'</h2>
+  <h2 *ngIf="!selectedStream">Choose a Stream  '{{selectedStream.streamName}}'</h2>
+ 
 </div>
   <section class="main-section" *ngIf="selectedStream">
 
@@ -14,7 +16,7 @@
     </div>
 
   </section>
- 
+  
   
 
   

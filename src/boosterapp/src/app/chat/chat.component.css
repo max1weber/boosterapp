@@ -143,6 +143,7 @@ a.button7{
   .chat-logs {
     padding:15px; 
     height:370px;
+    overflow-x: hidden;
     overflow-y:scroll;
   }
   

@@ -24,8 +24,9 @@ declare const videojs: any;
 })
 export class VideoComponent implements OnInit, OnDestroy, OnChanges {
   selectedStreamSub : Subscription;
-  selectedStream : BoosterStream =null;
+  selectedStream : BoosterStream;
 
+  basicStream: BoosterStream = new BoosterStream ("zYk8RzTarIbSgApD00ASATX1fMfAs8sJq2efvNBNNO1Y", "East",   true,  "22c03022-c31b-f098-3f93-4b72de758c6c",  "https://stream.mux.com/EaUOoslt02Djmf2qecizYuH4WPZG02CxagSltaDPDER4g.m3u8", 0);
  
  
   //@Input() stream: BoosterStream;
@@ -67,6 +68,9 @@ export class VideoComponent implements OnInit, OnDestroy, OnChanges {
         this.selectedStream = selection;
         
         this.SetupSourceUrl();
+      }else {
+
+        this.selectedStream = this.basicStream;
       }
 
     });

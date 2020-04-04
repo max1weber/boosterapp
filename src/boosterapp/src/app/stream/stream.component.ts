@@ -14,18 +14,20 @@ import { CommunicationService } from '../services/communication.service';
 })
 export class StreamComponent implements OnInit, OnDestroy {
 
+ 
+  
 
   streamsSub : Subscription;
   selectedStreamSub : Subscription;
   streams : BoosterStream[] = [];
- selectedStream : BoosterStream =null;
+ selectedStream : BoosterStream=null;
  private routeSub: any;
  streamName : string='';
 
 
   constructor(private commSrvice: CommunicationService,private _router: Router, private route: ActivatedRoute) {
      
-  
+
 
    }
 
@@ -53,7 +55,7 @@ export class StreamComponent implements OnInit, OnDestroy {
 
       if (selection !=null && selection != undefined)
       {
-      this.selectedStream = selection;
+          this.selectedStream = selection;
      
       }
 
@@ -62,6 +64,7 @@ export class StreamComponent implements OnInit, OnDestroy {
    
     this.routeSub = this.route.params.subscribe(params=>{
       this.streamName = params["streamName"];
+     
       this.commSrvice.SetSelectedStreamByName(this.streamName);
 
     });

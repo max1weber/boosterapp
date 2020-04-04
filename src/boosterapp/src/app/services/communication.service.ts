@@ -17,12 +17,13 @@ import { ApplicationInsightService } from './application-insight.service';
 export class CommunicationService implements OnInit, OnDestroy {
 
   
-
+  basicStream: BoosterStream = new BoosterStream ("zYk8RzTarIbSgApD00ASATX1fMfAs8sJq2efvNBNNO1Y", "East",   true,  "22c03022-c31b-f098-3f93-4b72de758c6c",  "https://stream.mux.com/EaUOoslt02Djmf2qecizYuH4WPZG02CxagSltaDPDER4g.m3u8", 0);
+ 
 
   private _baseStreams = new BehaviorSubject<BoosterStream[]>([]);
   private dataStore : {streams : BoosterStream[]} =  {streams:[] }; //// store data in memory
   
-  private _selectedStream = new BehaviorSubject<BoosterStream>(null);
+  private _selectedStream = new BehaviorSubject<BoosterStream>(this.basicStream);
 
 
   constructor( private httpClient : HttpClient, private appInsights: ApplicationInsightService) {
@@ -82,7 +83,9 @@ export class CommunicationService implements OnInit, OnDestroy {
    
     if (this.dataStore.streams.length >0)
     {
-      //console.log("SetSelectedStreamByName");
+      let msg = "SetSelectedStreamByRouteName: " + streamName
+      console.log(msg);
+      this.appInsights.logEvent(msg);
       let nextstream =this.dataStore.streams.find(p=>p.streamName==streamName);
       this.SetSelectedStream(nextstream);
         
@@ -101,7 +104,7 @@ export class CommunicationService implements OnInit, OnDestroy {
           this.appInsights.logEvent("SourcesFetched");
           this.dataStore.streams = result.streams;
           this._baseStreams.next(Object.assign({}, this.dataStore).streams);
-         let _selectedStreamItem = this.dataStore.streams.find(p=>p.IsSelected == true);
+          let _selectedStreamItem = this.dataStore.streams.find(p=>p.IsSelected == true);
             this._selectedStream.next(_selectedStreamItem);
 
         }},

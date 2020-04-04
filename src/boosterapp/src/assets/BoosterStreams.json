@@ -4,7 +4,7 @@
 			"id": "zYk8RzTarIbSgApD00ASATX1fMfAs8sJq2efvNBNNO1Y",
 			"order": 0,
 			"streamName": "East",
-			"IsSelected": false,
+			"IsSelected": true,
 			"stream_key": "22c03022-c31b-f098-3f93-4b72de758c6c",
 			"playback_url": "https://stream.mux.com/EaUOoslt02Djmf2qecizYuH4WPZG02CxagSltaDPDER4g.m3u8"
 		},
